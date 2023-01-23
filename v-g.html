@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Vue.js-Viz.js</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/viz.js@1.8.0"></script>
+  <style>
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="graph">
+      <div class="write">
+        <h2>入力</h2>
+        <textarea v-model="input"></textarea>
+      </div>
+      <div class="out">
+        <h2>結果</h2>
+        <div class="graph" v-html="svg"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  new Vue({
+    el: '#graph',
+    data: {
+      input: `digraph x {
+graph [
+charset = "UTF-8",
+rankdir = LR,
+];
+start -> a0;
+start -> b0;
+a1 -> b3;
+b2 -> a3;
+a3 -> a0;
+a3 -> end;
+b3 -> end;
+}
+`,
+    },
+    computed: {
+      svg: function() {
+        return Viz(this.input, {
+          format: 'svg'
+        });
+      },
+    },
+});
+</script>
+</html>
+
