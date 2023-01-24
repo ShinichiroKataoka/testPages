@@ -12,11 +12,8 @@
     // URLパラメータ（digraph）を取得
     let digraph = params.get('digraph');
 
-    function updateGraph() {
-        d3.select("#graph").graphviz()
-            .fade(false)
-            .zoom(false)
-            .renderDot(digraph);
-    }
-    updateGraph();
+    d3.select("#graph").graphviz()
+        .fade(false)
+        .zoom(false)
+        .renderDot(digraph);
 </script>
