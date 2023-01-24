@@ -1,21 +1,23 @@
-<head>
-  <meta charset="utf-8">
-  <script src="https://rsms.me/graphviz/graphviz.js"></script>
-</head>
-<body>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://unpkg.com/viz.js@1.8.2/viz.js" type="javascript/worker"></script>
+<script src="https://unpkg.com/d3-graphviz@2.6.1/build/d3-graphviz.js"></script>
 <script>
-// URLを取得
-let url = new URL(window.location.href);
+    // URLを取得
+    let url = new URL(window.location.href);
 
-// URLSearchParamsオブジェクトを取得
-let params = url.searchParams;
+    // URLSearchParamsオブジェクトを取得
+    let params = url.searchParams;
 
-// URLパラメータ（digraph）を取得
-let digraph = params.get('digraph');
+    // URLパラメータ（digraph）を取得
+    let digraph = params.get('digraph');
 
-// 描画
-graphviz.layout(digraph).then(svg => {
-  document.body.innerHTML = svg
-})
+    function updateGraph() {
+        let textArea = document.getElementById('dotSourceArea');
+        let dotSource = textArea.value;
+        d3.select("#graph").graphviz()
+            .fade(false)
+            .zoom(false)
+            .renderDot(digraph);
+    }
+    updateGraph();
 </script>
-</body>

@@ -1,9 +1,4 @@
-<head>
-  <meta charset="utf-8">
-  <script src="https://rsms.me/graphviz/graphviz.js"></script>
-  <script src="https://rsms.me/graphviz/viz-worker.js?v=1.0.7" type="javascript/worker"></script>
-</head>
-<body>
+<script src="https://rsms.me/graphviz/graphviz.js"></script>
 <script>
 // URLを取得
 let url = new URL(window.location.href);
@@ -19,4 +14,3 @@ graphviz.layout(digraph).then(svg => {
   document.body.innerHTML = svg
 })
 </script>
-</body>
